@@ -152,7 +152,14 @@ function setupProfileBinding() {
   const nameSource = $("[data-profile-name]");
   const taglineSource = $("[data-profile-tagline]");
 
-  const name = (nameSource?.textContent || "").trim() || "Nama Kamu";
+  const fallbackName =
+    ($("[data-bio-name]")?.textContent || "").trim() ||
+    ($("[data-footer-name]")?.textContent || "").trim();
+
+  const name =
+    (nameSource?.textContent || "").trim() ||
+    fallbackName ||
+    "INTAN PERTIWI";
   const tagline =
     (taglineSource?.textContent || "").trim() ||
     "Tagline kamu di sini — singkat, confident, dan keren.";
